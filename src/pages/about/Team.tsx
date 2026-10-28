@@ -15,10 +15,9 @@ const Team = () => (
           <div className="flex justify-center">
             <div className="w-64 h-64 rounded-full border-4 border-blue-600 overflow-hidden shadow-xl">
               <img
-                src="https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100009141/84a8.webp"
+                src="/images/mike-thomas.webp"
                 alt="Michael Thomas"
-                className="w-full h-full object-cover"
-                crossOrigin="anonymous"
+                className="w-full h-full object-cover object-top"
               />
             </div>
           </div>

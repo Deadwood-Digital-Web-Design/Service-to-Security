@@ -2,14 +2,12 @@ import PageLayout from '@/components/PageLayout';
 import HeroSection from '@/components/HeroSection';
 import { Phone, Mail, Clock, MessageSquare } from 'lucide-react';
 import { useState } from 'react';
+import { useLeadForm } from '@/hooks/useLeadForm';
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const { handleSubmit, sending, error } = useLeadForm('Contact form', () => setSubmitted(true));
 
   return (
     <PageLayout>
@@ -112,8 +110,9 @@ const Contact = () => {
                       <label className="block text-sm font-semibold text-blue-600 mb-2">Message <span className="text-red-500">*</span></label>
                       <textarea rows={4} className="w-full px-4 py-3 border-2 border-blue-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none" required />
                     </div>
-                    <button type="submit" className="w-full bg-red-500 hover:bg-red-600 text-white font-bold text-lg py-4 rounded-lg transition">
-                      SEND MESSAGE
+                    {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+<button type="submit" disabled={sending} className="disabled:opacity-60 w-full bg-red-500 hover:bg-red-600 text-white font-bold text-lg py-4 rounded-lg transition">
+                      {sending ? 'SENDING...' : 'SEND MESSAGE'}
                     </button>
                   </form>
                 </div>

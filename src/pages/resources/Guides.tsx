@@ -2,6 +2,7 @@ import PageLayout from '@/components/PageLayout';
 import HeroSection from '@/components/HeroSection';
 import { FileText, Download } from 'lucide-react';
 import { useState } from 'react';
+import { useLeadForm } from '@/hooks/useLeadForm';
 
 const guides = [
   { title: 'The Complete Medicare Enrollment Guide', desc: 'Step-by-step walkthrough of the Medicare enrollment process, timelines, and key decisions.', category: 'Medicare' },
@@ -17,11 +18,14 @@ const Guides = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setSelectedGuide(null);
-  };
+  const { handleSubmit, sending, error } = useLeadForm(
+    'Guide request',
+    () => {
+      setSubmitted(true);
+      setSelectedGuide(null);
+    },
+    () => ({ 'Guide requested': selectedGuide ?? '' }),
+  );
 
   return (
     <PageLayout>
@@ -66,8 +70,9 @@ const Guides = () => {
                     required
                   />
                   <div className="flex gap-3">
-                    <button type="submit" className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">
-                      Send Guide
+                    {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+<button type="submit" disabled={sending} className="disabled:opacity-60 flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">
+                      {sending ? 'Sending...' : 'Send Guide'}
                     </button>
                     <button type="button" onClick={() => setSelectedGuide(null)} className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 rounded-lg transition">
                       Cancel
@@ -80,7 +85,7 @@ const Guides = () => {
 
           {submitted && (
             <div className="mt-8 p-6 bg-blue-50 rounded-lg text-center">
-              <p className="text-blue-700 font-semibold">Thank you! Check your email for the download link.</p>
+              <p className="text-blue-700 font-semibold">Thank you! We'll email your copy shortly.</p>
             </div>
           )}
         </div>

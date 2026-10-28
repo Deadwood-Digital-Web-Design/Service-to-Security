@@ -2,6 +2,7 @@ import PageLayout from '@/components/PageLayout';
 import HeroSection from '@/components/HeroSection';
 import { CheckSquare, Download } from 'lucide-react';
 import { useState } from 'react';
+import { useLeadForm } from '@/hooks/useLeadForm';
 
 const checklistItems = [
   'Verify your Social Security work history (40 quarters minimum)',
@@ -22,10 +23,7 @@ const Checklist = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const { handleSubmit, sending, error } = useLeadForm('Medicare checklist request', () => setSubmitted(true));
 
   return (
     <PageLayout>
@@ -58,7 +56,7 @@ const Checklist = () => {
                 </p>
                 {submitted ? (
                   <div className="bg-white/20 rounded-lg p-4 text-center">
-                    <p className="font-semibold">Thank you! Check your email for the download link.</p>
+                    <p className="font-semibold">Thank you! We'll email your copy shortly.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-3">
@@ -70,8 +68,9 @@ const Checklist = () => {
                       className="w-full px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500"
                       required
                     />
-                    <button type="submit" className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg transition">
-                      Send Me the Checklist
+                    {error && <p role="alert" className="text-sm font-semibold text-white bg-red-700 rounded p-2">{error}</p>}
+<button type="submit" disabled={sending} className="disabled:opacity-60 w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg transition">
+                      {sending ? 'Sending...' : 'Send Me the Checklist'}
                     </button>
                   </form>
                 )}

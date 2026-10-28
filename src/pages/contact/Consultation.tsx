@@ -2,6 +2,7 @@ import PageLayout from '@/components/PageLayout';
 import HeroSection from '@/components/HeroSection';
 import { Calendar, Video, MapPin, Phone, Check } from 'lucide-react';
 import { useState, FormEvent } from 'react';
+import { useLeadForm } from '@/hooks/useLeadForm';
 
 const Consultation = () => {
   const [formData, setFormData] = useState({
@@ -26,36 +27,26 @@ const Consultation = () => {
     }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    
-    const subject = `Consultation Request - ${formData.firstName} ${formData.lastName}`;
-    const body = `
-CONSULTATION REQUEST
-
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-
-Meeting Preference: ${formData.meetingType}
-Preferred Date: ${formData.preferredDate}
-Preferred Time: ${formData.preferredTime}
-
-Topics of Interest:
-${formData.topics.map(topic => `- ${topic}`).join('\n')}
-
-Veteran Status: ${formData.isVeteran ? 'Yes' : 'No'}
-
-Additional Notes:
-${formData.notes || 'None provided'}
-
----
-This consultation request was submitted through Key Retirement Solutions website.
-    `.trim();
-
-    const mailtoLink = `mailto:mthomas@krs.insure?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
-  };
+  const [submitted, setSubmitted] = useState(false);
+  const { handleSubmit, sending, error } = useLeadForm(
+    'Consultation request',
+    () => setSubmitted(true),
+    () =>
+      Object.fromEntries(
+        Object.entries({
+          Name: `${formData.firstName} ${formData.lastName}`.trim(),
+          Email: formData.email,
+          Phone: formData.phone,
+          'Meeting Preference': formData.meetingType,
+          'Preferred Date': formData.preferredDate,
+          'Preferred Time': formData.preferredTime,
+          'Topics of Interest': formData.topics.join(', '),
+          'Veteran or Active Military': formData.isVeteran ? 'Yes' : 'No',
+          'Additional Notes': formData.notes,
+        }).filter(([, v]) => v),
+      ),
+    true,
+  );
 
   return (
   <PageLayout>
@@ -131,6 +122,12 @@ This consultation request was submitted through Key Retirement Solutions website
           <div>
             <h2 className="text-3xl font-bold text-blue-600 mb-6" id="consultation">SCHEDULE YOUR CONSULTATION</h2>
             
+            {submitted ? (
+              <div className="bg-blue-50 rounded-lg p-8 text-center">
+                <h3 className="text-2xl font-bold text-blue-600 mb-2">Consultation Requested!</h3>
+                <p className="text-gray-700">Thank you. We'll contact you within 24 hours to confirm your appointment.</p>
+              </div>
+            ) : (
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -313,18 +310,20 @@ This consultation request was submitted through Key Retirement Solutions website
                 </label>
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg transition transform hover:scale-105 flex items-center justify-center gap-2"
+              {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+<button
+                type="submit" disabled={sending}
+                className="disabled:opacity-60 w-full bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg transition transform hover:scale-105 flex items-center justify-center gap-2"
               >
                 <Calendar className="w-5 h-5" />
-                Request Consultation
+                {sending ? 'Sending...' : 'Request Consultation'}
               </button>
 
               <p className="text-xs text-gray-500 text-center">
                 After submitting, we'll contact you within 24 hours to confirm your appointment
               </p>
             </form>
+            )}
           </div>
 
           {/* What to Bring */}

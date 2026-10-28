@@ -17,9 +17,12 @@ import {
 
 import { useState, useRef } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import MedicareDisclaimer from "@/components/MedicareDisclaimer";
 
 
 const Index = () => {
+  usePageMeta();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -419,10 +422,9 @@ const Index = () => {
           <div className="max-w-3xl mx-auto text-center">
             <div className="mb-6">
               <img
-                src="https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100009141/84a8.webp"
+                src="/images/mike-thomas.webp"
                 alt="Michael Thomas"
-                className="rounded-lg shadow-lg w-30 h-30 object-cover mx-auto border-4 border-blue-600"
-                crossOrigin="anonymous"
+                className="rounded-lg shadow-lg w-48 h-48 object-cover object-top mx-auto border-4 border-blue-600"
               />
             </div>
             <h2 className="text-4xl font-bold text-blue-600 mb-3">Michael Thomas</h2>
@@ -768,6 +770,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-8 pt-8 border-t border-white/20">
+            <MedicareDisclaimer />
             <p className="text-sm">© 2026 Service to Security. All rights reserved.</p>
           </div>
         </div>

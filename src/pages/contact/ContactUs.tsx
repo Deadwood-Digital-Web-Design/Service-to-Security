@@ -1,8 +1,12 @@
 import PageLayout from '@/components/PageLayout';
 import HeroSection from '@/components/HeroSection';
 import { Phone, Mail, MessageSquare, MapPin, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { useLeadForm } from '@/hooks/useLeadForm';
 
 const ContactUs = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const { handleSubmit, sending, error } = useLeadForm('Contact Us form', () => setSubmitted(true));
   return (
     <PageLayout>
       <HeroSection
@@ -103,7 +107,13 @@ const ContactUs = () => {
             <div className="bg-white border-2 border-blue-600 rounded-lg p-8 shadow-lg">
               <h2 className="text-2xl font-bold text-blue-600 mb-6">SEND US A MESSAGE</h2>
               
-              <form className="space-y-4">
+              {submitted ? (
+                <div className="bg-blue-50 rounded-lg p-8 text-center">
+                  <h3 className="text-2xl font-bold text-blue-600 mb-2">Message Sent!</h3>
+                  <p className="text-gray-700">Thank you for reaching out. We'll respond within one business day.</p>
+                </div>
+              ) : (
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                     Full Name *
@@ -186,17 +196,19 @@ const ContactUs = () => {
                   </label>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg transition transform hover:scale-105"
+                {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+<button
+                  type="submit" disabled={sending}
+                  className="disabled:opacity-60 w-full bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg transition transform hover:scale-105"
                 >
-                  Send Message
+                  {sending ? 'Sending...' : 'Send Message'}
                 </button>
 
                 <p className="text-xs text-gray-500 text-center">
                   By submitting this form, you consent to be contacted by Service to Security. We respect your privacy and will never share your information.
                 </p>
               </form>
+              )}
             </div>
           </div>
         </div>

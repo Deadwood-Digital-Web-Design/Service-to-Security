@@ -2,15 +2,13 @@ import PageLayout from '@/components/PageLayout';
 import HeroSection from '@/components/HeroSection';
 import { Calendar, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
+import { useLeadForm } from '@/hooks/useLeadForm';
 
 const Schedule = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', preferredDate: '', notes: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const { handleSubmit, sending, error } = useLeadForm('Appointment request', () => setSubmitted(true));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -83,8 +81,9 @@ const Schedule = () => {
                       <label className="block text-sm font-semibold text-blue-600 mb-2">Notes or Questions</label>
                       <textarea name="notes" value={formData.notes} onChange={handleChange} rows={3} className="w-full px-4 py-3 border-2 border-blue-300 rounded-lg focus:border-blue-500 focus:outline-none resize-none" />
                     </div>
-                    <button type="submit" className="w-full bg-red-500 hover:bg-red-600 text-white font-bold text-lg py-4 rounded-lg transition">
-                      REQUEST APPOINTMENT
+                    {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
+<button type="submit" disabled={sending} className="disabled:opacity-60 w-full bg-red-500 hover:bg-red-600 text-white font-bold text-lg py-4 rounded-lg transition">
+                      {sending ? 'SENDING...' : 'REQUEST APPOINTMENT'}
                     </button>
                   </form>
                 </div>

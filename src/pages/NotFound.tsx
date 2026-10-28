@@ -5,6 +5,17 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = "Page Not Found | Service To Security";
+    const robots = document.createElement("meta");
+    robots.name = "robots";
+    robots.content = "noindex";
+    document.head.appendChild(robots);
+    return () => {
+      document.head.removeChild(robots);
+    };
+  }, []);
+
+  useEffect(() => {
     console.error(
       "404 Error: User attempted to access non-existent route:",
       location.pathname

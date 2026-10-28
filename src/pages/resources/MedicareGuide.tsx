@@ -1,8 +1,13 @@
 import PageLayout from '@/components/PageLayout';
 import HeroSection from '@/components/HeroSection';
 import { Download, FileText, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
+import { useLeadForm } from '@/hooks/useLeadForm';
 
-const MedicareGuide = () => (
+const MedicareGuide = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const { handleSubmit, sending, error } = useLeadForm('Medicare Planning Guide request', () => setSubmitted(true));
+  return (
   <PageLayout>
     <HeroSection
       title="MEDICARE PLANNING GUIDE"
@@ -17,21 +22,26 @@ const MedicareGuide = () => (
           <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
             Get our comprehensive Medicare planning guide delivered straight to your inbox. Learn about enrollment periods, coverage options, and how to avoid costly penalties.
           </p>
-          <form className="max-w-md mx-auto">
+          {submitted ? (
+            <p className="text-blue-700 font-semibold">Thank you! We'll email your copy shortly.</p>
+          ) : (
+          <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
             <input
               type="email"
               placeholder="Enter your email address"
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none mb-4"
               required
             />
-            <button
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition flex items-center justify-center gap-2"
+            {error && <p role="alert" className="text-sm text-red-600 mb-3">{error}</p>}
+<button
+              type="submit" disabled={sending}
+              className="disabled:opacity-60 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition flex items-center justify-center gap-2"
             >
               <Download className="w-5 h-5" />
-              Download Free Guide
+              {sending ? 'Sending...' : 'Download Free Guide'}
             </button>
           </form>
+          )}
         </div>
       </div>
     </section>
@@ -85,7 +95,7 @@ const MedicareGuide = () => (
               <strong>Covers:</strong> Doctor visits, outpatient care, preventive services, medical equipment, ambulance services
             </p>
             <p className="text-gray-700">
-              <strong>Cost:</strong> Monthly premium (standard $174.70 in 2024, higher for high earners)
+              <strong>Cost:</strong> Monthly premium (standard $202.90 in 2026, higher for high earners)
             </p>
           </div>
 
@@ -135,6 +145,7 @@ const MedicareGuide = () => (
       </div>
     </section>
   </PageLayout>
-);
+  );
+};
 
 export default MedicareGuide;
