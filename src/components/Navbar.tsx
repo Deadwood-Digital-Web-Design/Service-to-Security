@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-              <a to="/" className="text-2xl font-bold text-white">
+              <a href="/" className="text-2xl font-bold text-white">
                 <img
                   src="https://grazia-prod.oss-ap-southeast-1.aliyuncs.com/resources/uid_100009141/3339.jpg"
                   alt="Service To Security"
@@ -217,11 +217,11 @@ const Navbar = () => {
 
             {/* Desktop Phone Button */}
             <a
-              href="tel:816-752-4944"
+              href="tel:816-248-1100"
               className="flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2 font-bold text-sm text-white transition-all hover:bg-red-400"
             >
               <Phone className="h-4 w-4" />
-              816-752-4944
+              816-248-1100
             </a>
           </div>
 
@@ -396,12 +396,12 @@ const Navbar = () => {
 
               {/* Mobile Phone Button */}
               <a
-                href="tel:816-752-4944"
+                href="tel:816-248-1100"
                 className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 py-3 font-bold text-white transition hover:bg-blue-400"
                 onClick={closeMobileMenu}
               >
                 <Phone className="h-4 w-4" />
-                816-752-4944
+                816-248-1100
               </a>
             </div>
           </div>

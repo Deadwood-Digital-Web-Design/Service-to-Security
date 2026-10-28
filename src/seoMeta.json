@@ -1,0 +1,115 @@
+{
+  "/": {
+    "title": "Service To Security | Medicare & Retirement Planning",
+    "description": "Mike Thomas helps Missouri veterans, retirees, and families with Medicare, retirement income, life insurance, and long-term care. Free consultation."
+  },
+  "/about/our-story": {
+    "title": "Our Story | Service To Security",
+    "description": "From military service to financial security: how Mike Thomas built Service To Security on duty, trust, and putting families first."
+  },
+  "/about/our-mission": {
+    "title": "Our Mission | Service To Security",
+    "description": "Our mission is to help veterans, retirees, and families protect their financial future with clear knowledge and honest strategies."
+  },
+  "/about/team": {
+    "title": "Meet Mike Thomas | Service To Security",
+    "description": "Meet Michael Thomas, RICP, CLTC, MMC, your Medicare and retirement planning specialist serving Trenton and all of Missouri."
+  },
+  "/about/why-choose-us": {
+    "title": "Why Choose Us | Service To Security",
+    "description": "Mission-driven Medicare and retirement planning built on trust, expertise, and a real commitment to your future. Honest, no-pressure advice."
+  },
+  "/medicare/basics": {
+    "title": "Medicare Basics Explained | Service To Security",
+    "description": "What Medicare is, who qualifies, and how Parts A, B, C, and D work, explained in plain English by a Missouri Medicare specialist."
+  },
+  "/medicare/advantage": {
+    "title": "Medicare Advantage (Part C) Plans | Service To Security",
+    "description": "See how Medicare Advantage plans bundle hospital, medical, and often drug coverage with extras like dental and vision, and whether one fits you."
+  },
+  "/medicare/supplement": {
+    "title": "Medicare Supplement (Medigap) Plans | Service To Security",
+    "description": "Medigap plans fill the gaps in Original Medicare for predictable costs and no network limits. Compare Medicare Supplement options with us."
+  },
+  "/medicare/part-d": {
+    "title": "Medicare Part D Prescription Plans | Service To Security",
+    "description": "Keep your medications affordable. We help you compare Part D drug plans and avoid late-enrollment penalties every enrollment season."
+  },
+  "/medicare/enrollment": {
+    "title": "Medicare Enrollment Periods | Service To Security",
+    "description": "Know your Medicare enrollment windows (Initial, Annual, and Special) so you avoid lifetime penalties and get the right coverage on time."
+  },
+  "/medicare/faqs": {
+    "title": "Medicare FAQs | Service To Security",
+    "description": "Clear answers to the most common Medicare questions on enrollment, costs, plan types, and coverage so you can decide with confidence."
+  },
+  "/retirement/income": {
+    "title": "Retirement Income Planning | Service To Security",
+    "description": "Build a reliable, tax-smart retirement income plan that sustains your lifestyle. Free consultation with Mike Thomas."
+  },
+  "/retirement/social-security": {
+    "title": "Social Security Claiming Strategy | Service To Security",
+    "description": "When you claim Social Security can significantly change your lifetime benefits. Get a strategy for timing and coordinating your benefits."
+  },
+  "/retirement/long-term-care": {
+    "title": "Long-Term Care Planning | Service To Security",
+    "description": "Protect your assets, your dignity, and your family from the cost of extended care with a long-term care plan built for your situation."
+  },
+  "/retirement/annuities": {
+    "title": "Annuities & Guaranteed Income | Service To Security",
+    "description": "Create guaranteed income and protect your retirement savings with annuity solutions explained in plain English."
+  },
+  "/retirement/asset-protection": {
+    "title": "Asset Protection Planning | Service To Security",
+    "description": "Safeguard your hard-earned wealth from taxes, lawsuits, market risk, and long-term care costs with a clear asset protection strategy."
+  },
+  "/retirement/life-insurance": {
+    "title": "Life Insurance Planning | Service To Security",
+    "description": "Protect your loved ones with life insurance strategies built around your family's needs and budget. No-pressure guidance from Mike Thomas."
+  },
+  "/retirement/estate-planning": {
+    "title": "Estate Planning | Service To Security",
+    "description": "Protect your legacy and make sure your wishes are honored with a comprehensive estate plan that provides for the people you love."
+  },
+  "/resources/information": {
+    "title": "Videos: Medicare & Retirement Tips | Service To Security",
+    "description": "Watch Mike Thomas's Medicare Minute, Money Monday, and What If Wednesday videos on Medicare, retirement income, and protecting your family."
+  },
+  "/resources/checklist": {
+    "title": "Medicare Enrollment Checklist | Service To Security",
+    "description": "A 12-step checklist to prepare for Medicare enrollment, from verifying your work history to comparing plans. Organized and ready to use."
+  },
+  "/resources/guides": {
+    "title": "Free Medicare & Retirement Guides | Service To Security",
+    "description": "Free guides on Medicare enrollment, Medicare Advantage vs. Medigap, Social Security, retirement income, and long-term care planning."
+  },
+  "/resources/faq": {
+    "title": "Frequently Asked Questions | Service To Security",
+    "description": "Answers to common questions about Medicare, retirement planning, life insurance, and how we work with clients."
+  },
+  "/resources/medicare-guide": {
+    "title": "Free Medicare Planning Guide | Service To Security",
+    "description": "Get our free Medicare planning guide: enrollment timelines, plan comparisons, penalties to avoid, and a quick reference for Parts A through D."
+  },
+  "/contact": {
+    "title": "Contact Service To Security | Trenton, MO",
+    "description": "Questions about Medicare or retirement planning? Call, text, or send a message. Mike Thomas responds within one business day."
+  },
+  "/contact/schedule": {
+    "title": "Schedule an Appointment | Service To Security",
+    "description": "Book your complimentary Medicare or retirement planning consultation and take the first step toward securing your financial future."
+  },
+  "/contact/us": {
+    "title": "Send Us a Message | Service To Security",
+    "description": "Ready to secure your retirement? Tell us what you need help with and Mike Thomas will get back to you.",
+    "canonical": "/contact/"
+  },
+  "/contact/consultation": {
+    "title": "Request a Free Consultation | Service To Security",
+    "description": "Schedule a complimentary, no-obligation consultation to talk through your Medicare, retirement, and insurance needs in person, by phone, or by video."
+  },
+  "/contact/locations": {
+    "title": "Office Location & Service Area | Service To Security",
+    "description": "Visit us at 1039 Oklahoma Ave, Trenton, MO 64683. Serving veterans, retirees, and families across Trenton and Missouri."
+  }
+}

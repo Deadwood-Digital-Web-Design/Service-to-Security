@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import MedicareDisclaimer from './MedicareDisclaimer';
 
 const Footer = () => (
 <footer className="bg-gray-800 text-white py-12">
@@ -43,6 +43,7 @@ const Footer = () => (
           </div>
 
           <div className="text-center mt-8 pt-8 border-t border-white/20">
+            <MedicareDisclaimer />
             <p className="text-sm">© 2026 Service to Security. All rights reserved.</p>
           </div>
         </div>
