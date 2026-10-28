@@ -5,61 +5,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Primary SEO -->
-  <title>Service To Security | Medicare & Retirement Planning | Mike Thomas</title>
-  <meta name="description" content="Service To Security helps Missouri families navigate Medicare enrollment, retirement income planning, life insurance, and long-term care. Schedule a free consultation with Mike Thomas today." />
-  <meta name="keywords" content="Medicare, Medicare Advantage, Medigap, Medicare Supplement, retirement planning, Social Security, long-term care, life insurance, annuities, estate planning, Missouri, Trenton MO, Mike Thomas" />
+  <!-- Primary SEO. The title/description/canonical/og/twitter values below are the HOME page defaults.
+       Every other page gets its own values from src/seoMeta.json (client side via usePageMeta,
+       and baked into static HTML at build time by scripts/prerender.mjs). -->
+  <title>Service To Security | Medicare &amp; Retirement Planning</title>
+  <meta name="description" content="Mike Thomas helps Missouri veterans, retirees, and families with Medicare, retirement income, life insurance, and long-term care. Free consultation." />
   <meta name="author" content="Mike Thomas, Service To Security" />
   <link rel="canonical" href="https://servicetosecurity.com/" />
 
   <!-- Open Graph (Facebook, LinkedIn) -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://servicetosecurity.com/" />
-  <meta property="og:title" content="Service To Security | Medicare & Retirement Planning" />
-  <meta property="og:description" content="Navigate Medicare and retirement with confidence. Mike Thomas helps Missouri families find the right coverage and build a retirement income plan that lasts." />
+  <meta property="og:title" content="Service To Security | Medicare &amp; Retirement Planning" />
+  <meta property="og:description" content="Mike Thomas helps Missouri veterans, retirees, and families with Medicare, retirement income, life insurance, and long-term care. Free consultation." />
   <meta property="og:image" content="https://servicetosecurity.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Service To Security: Medicare and retirement planning with Mike Thomas" />
   <meta property="og:site_name" content="Service To Security" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://servicetosecurity.com/" />
-  <meta name="twitter:title" content="Service To Security | Medicare & Retirement Planning" />
-  <meta name="twitter:description" content="Navigate Medicare and retirement with confidence. Mike Thomas helps Missouri families find the right coverage and build a retirement income plan that lasts." />
+  <meta name="twitter:title" content="Service To Security | Medicare &amp; Retirement Planning" />
+  <meta name="twitter:description" content="Mike Thomas helps Missouri veterans, retirees, and families with Medicare, retirement income, life insurance, and long-term care. Free consultation." />
   <meta name="twitter:image" content="https://servicetosecurity.com/og-image.png" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon-32x32.png" />
-  <link rel="apple-touch-icon" href="/favicon-32x32.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Local Business Schema -->
+  <!-- Local business structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "InsuranceAgency",
     "name": "Service To Security",
-    "description": "Medicare and retirement planning services for Missouri families.",
-    "url": "https://servicetosecurity.com",
+    "description": "Medicare and retirement planning for Missouri veterans, retirees, and families.",
+    "url": "https://servicetosecurity.com/",
     "telephone": "816-248-1100",
     "email": "mthomas@krs.insure",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "1039 Oklahoma Ave",
+      "addressLocality": "Trenton",
       "addressRegion": "MO",
+      "postalCode": "64683",
       "addressCountry": "US"
     },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ],
     "founder": {
       "@type": "Person",
-      "name": "Mike Thomas"
+      "name": "Michael Thomas"
     },
     "sameAs": [
       "https://www.facebook.com/michael.thomas.10485546"
     ],
-    "serviceArea": {
+    "areaServed": {
       "@type": "State",
       "name": "Missouri"
     },
@@ -77,7 +91,7 @@
   }
   </script>
 
-  <!-- SPA redirect handler -->
+  <!-- SPA redirect handler (used by public/404.html for unknown URLs) -->
   <script>
     (function() {
       var redirect = sessionStorage.getItem('spa_redirect');
